@@ -27,6 +27,8 @@ const formSchema = z.object({
   message: z.string().min(5).max(500),
 })
 
+export type FormInput = z.infer<typeof formSchema>
+
 export function SubmissionForm() {
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,9 +42,25 @@ export function SubmissionForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try{
+      const res: Response = await fetch ("/api/send-email",
+      {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json"
+        },
+      })
+      const data = await res.json();
+      if(data){
+        console.log(data)
+      }
+    }
+    catch (error){
+      console.log(error)
+    }  }
 
 // return the jsx that will render 
 return (
