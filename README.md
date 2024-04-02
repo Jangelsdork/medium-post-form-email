@@ -1,1 +1,1 @@
-You can read the full medium post -> [here] (https://medium.com/@j.hespe.mangelsdorf/building-a-submission-form-with-nextjs-app-router-6a812bbd17de)
+You can read the full medium post -> [here](https://medium.com/@j.hespe.mangelsdorf/building-a-submission-form-with-nextjs-app-router-6a812bbd17de).
