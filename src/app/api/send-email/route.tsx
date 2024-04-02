@@ -1,8 +1,9 @@
+import { Resend } from 'resend';
 import { FormInput } from '../../../components/SubmissionForm';
 import { NextRequest, NextResponse } from 'next/server';
 import { EmailTemplate } from '../../../components/emailTemplate';
 
-const { Resend } = require('resend');
+
 
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -16,6 +17,7 @@ const formData:FormInput = await req.json()
       to: ['j.hespe.mangelsdorf@gmail.com'],
       subject: 'Hello world',
       react: EmailTemplate({ ...formData }),
+      text: ""
     });
 
     return NextResponse.json(data);
